@@ -3,3 +3,6 @@ inherit_from:
 
 Rails:
   Enabled: true
+
+Rails/OutputSafety:
+  Enabled: false
