@@ -45,6 +45,10 @@ Metrics/MethodLength:
 Style/AsciiComments:
   Enabled: false
 
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/**/*_test.rb
+
 Style/Documentation:
   Enabled: false
 
