@@ -11,7 +11,7 @@ tests/specs can have as many lines as desired.
 The rules here were generally guided by a few principles:
 
 1. Prefer what the Ruby community seems to follow as a whole
-1. Prefer rules which make it easier to collaborate
+1. Prefer rules which result in a smaller `git diff`
 1. Avoid unnecessarily changing default behavior
 
 
