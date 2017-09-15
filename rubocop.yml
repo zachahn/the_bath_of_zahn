@@ -1,3 +1,6 @@
+inherit_from:
+  - config/style_guide.yml
+
 AllCops:
   DisplayCopNames: true
   Exclude:
