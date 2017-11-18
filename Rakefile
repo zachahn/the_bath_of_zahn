@@ -1,8 +1,8 @@
 require "bundler/gem_tasks"
 
 task :test do
-  system %(rubocop -c rubocop.yml)
-  system %(rubocop -c rubocop-rails.yml)
+  system %(rubocop -c config/rubocop.yml)
+  system %(rubocop -c config/rubocop-rails.yml)
 end
 
 task :fix do
@@ -15,7 +15,7 @@ task :extract do
 
   extractor = TheBathOfZahn::Utility::Extractor.new
 
-  File.write("config/style_guide.yml", extractor.rules_styleguide.to_yaml)
+  File.write("config/internal/style_guide.yml", extractor.rules_styleguide.to_yaml)
 end
 
 task default: :test

@@ -1,6 +1,6 @@
 inherit_from:
-  - config/style_guide.yml
-  - config/overrides.yml
+  - internal/style_guide.yml
+  - internal/overrides.yml
 
 AllCops:
   DisplayCopNames: true
