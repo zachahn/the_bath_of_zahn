@@ -23,6 +23,12 @@ Rails/HasAndBelongsToMany:
   Enabled: true
   Include:
   - app/models/**/*.rb
+Rails/HasManyOrHasOneDependent:
+  Description: Define the dependent option to the has_many and has_one associations.
+  StyleGuide: https://github.com/bbatsov/rails-style-guide#has_many-has_one-dependent-option
+  Enabled: true
+  Include:
+  - app/models/**/*.rb
 Rails/ReadWriteAttribute:
   Description: Checks for read_attribute(:attr) and write_attribute(:attr, val).
   StyleGuide: https://github.com/bbatsov/rails-style-guide#read-attribute

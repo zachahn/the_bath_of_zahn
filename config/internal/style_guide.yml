@@ -207,6 +207,7 @@ Layout/Tab:
   Description: No hard tabs.
   StyleGuide: "#spaces-indentation"
   Enabled: true
+  IndentationWidth: 
 Layout/TrailingBlankLines:
   Description: Checks trailing blank lines and final newline.
   StyleGuide: "#newline-eof"
@@ -219,10 +220,125 @@ Layout/TrailingWhitespace:
   Description: Avoid trailing whitespace.
   StyleGuide: "#no-trailing-whitespace"
   Enabled: true
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   StyleGuide: "#accessor_mutator_method_names"
   Enabled: true
+Naming/AsciiIdentifiers:
+  Description: Use only ascii symbols in identifiers.
+  StyleGuide: "#english-identifiers"
+  Enabled: true
+Naming/ClassAndModuleCamelCase:
+  Description: Use CamelCase for classes and modules.
+  StyleGuide: "#camelcase-classes"
+  Enabled: true
+Naming/ConstantName:
+  Description: Constants should use SCREAMING_SNAKE_CASE.
+  StyleGuide: "#screaming-snake-case"
+  Enabled: true
+Naming/FileName:
+  Description: Use snake_case for source file names.
+  StyleGuide: "#snake-case-files"
+  Enabled: true
+  Exclude: []
+  ExpectMatchingDefinition: false
+  Regex: 
+  IgnoreExecutableScripts: true
+  AllowedAcronyms:
+  - CLI
+  - DSL
+  - ACL
+  - API
+  - ASCII
+  - CPU
+  - CSS
+  - DNS
+  - EOF
+  - GUID
+  - HTML
+  - HTTP
+  - HTTPS
+  - ID
+  - IP
+  - JSON
+  - LHS
+  - QPS
+  - RAM
+  - RHS
+  - RPC
+  - SLA
+  - SMTP
+  - SQL
+  - SSH
+  - TCP
+  - TLS
+  - TTL
+  - UDP
+  - UI
+  - UID
+  - UUID
+  - URI
+  - URL
+  - UTF8
+  - VM
+  - XML
+  - XMPP
+  - XSRF
+  - XSS
+Naming/HeredocDelimiterCase:
+  Description: Use configured case for heredoc delimiters.
+  StyleGuide: "#heredoc-delimiters"
+  Enabled: true
+  EnforcedStyle: uppercase
+  SupportedStyles:
+  - lowercase
+  - uppercase
+Naming/HeredocDelimiterNaming:
+  Description: Use descriptive heredoc delimiters.
+  StyleGuide: "#heredoc-delimiters"
+  Enabled: true
+  Blacklist:
+  - END
+  - !ruby/regexp /EO[A-Z]{1}/
+Naming/MethodName:
+  Description: Use the configured style when naming methods.
+  StyleGuide: "#snake-case-symbols-methods-vars"
+  Enabled: true
+  EnforcedStyle: snake_case
+  SupportedStyles:
+  - snake_case
+  - camelCase
+Naming/PredicateName:
+  Description: Check the names of predicate methods.
+  StyleGuide: "#bool-methods-qmark"
+  Enabled: true
+  NamePrefix:
+  - is_
+  - has_
+  - have_
+  NamePrefixBlacklist:
+  - is_
+  - has_
+  - have_
+  NameWhitelist:
+  - is_a?
+  MethodDefinitionMacros:
+  - define_method
+  - define_singleton_method
+  Exclude:
+  - spec/**/*
+Naming/BinaryOperatorParameterName:
+  Description: When defining binary operators, name the argument other.
+  StyleGuide: "#other-arg"
+  Enabled: true
+Naming/VariableName:
+  Description: Use the configured style when naming variables.
+  StyleGuide: "#snake-case-symbols-methods-vars"
+  Enabled: true
+  EnforcedStyle: snake_case
+  SupportedStyles:
+  - snake_case
+  - camelCase
 Style/Alias:
   Description: Use alias instead of alias_method.
   StyleGuide: "#alias-method"
@@ -246,10 +362,6 @@ Style/ArrayJoin:
 Style/AsciiComments:
   Description: Use only ascii symbols in comments.
   StyleGuide: "#english-comments"
-  Enabled: true
-Style/AsciiIdentifiers:
-  Description: Use only ascii symbols in identifiers.
-  StyleGuide: "#english-identifiers"
   Enabled: true
 Style/Attr:
   Description: Checks for uses of Module#attr.
@@ -309,10 +421,14 @@ Style/CharacterLiteral:
   Description: Checks for uses of character literals.
   StyleGuide: "#no-character-literals"
   Enabled: true
-Style/ClassAndModuleCamelCase:
-  Description: Use CamelCase for classes and modules.
-  StyleGuide: "#camelcase-classes"
+Style/ClassAndModuleChildren:
+  Description: Checks style of children classes and modules.
+  StyleGuide: "#namespace-definition"
   Enabled: true
+  EnforcedStyle: nested
+  SupportedStyles:
+  - nested
+  - compact
 Style/ClassMethods:
   Description: Use self when defining module/class methods.
   StyleGuide: "#def-self-class-methods"
@@ -346,9 +462,9 @@ Style/CommentAnnotation:
   - OPTIMIZE
   - HACK
   - REVIEW
-Style/ConstantName:
-  Description: Constants should use SCREAMING_SNAKE_CASE.
-  StyleGuide: "#screaming-snake-case"
+Style/DateTime:
+  Description: Use Date or Time over DateTime.
+  StyleGuide: "#date--time"
   Enabled: true
 Style/DefWithParentheses:
   Description: Use def with parentheses when there are arguments.
@@ -374,59 +490,14 @@ Style/EndBlock:
   Description: Avoid the use of END blocks.
   StyleGuide: "#no-END-blocks"
   Enabled: true
+Style/Encoding:
+  Description: Use UTF-8 as the source file encoding.
+  StyleGuide: "#utf-8"
+  Enabled: true
 Style/EvenOdd:
   Description: Favor the use of Integer#even? && Integer#odd?
   StyleGuide: "#predicate-methods"
   Enabled: true
-Style/FileName:
-  Description: Use snake_case for source file names.
-  StyleGuide: "#snake-case-files"
-  Enabled: true
-  Exclude: []
-  ExpectMatchingDefinition: false
-  Regex: 
-  IgnoreExecutableScripts: true
-  AllowedAcronyms:
-  - CLI
-  - DSL
-  - ACL
-  - API
-  - ASCII
-  - CPU
-  - CSS
-  - DNS
-  - EOF
-  - GUID
-  - HTML
-  - HTTP
-  - HTTPS
-  - ID
-  - IP
-  - JSON
-  - LHS
-  - QPS
-  - RAM
-  - RHS
-  - RPC
-  - SLA
-  - SMTP
-  - SQL
-  - SSH
-  - TCP
-  - TLS
-  - TTL
-  - UDP
-  - UI
-  - UID
-  - UUID
-  - URI
-  - URL
-  - UTF8
-  - VM
-  - XML
-  - XMPP
-  - XSRF
-  - XSS
 Style/FlipFlop:
   Description: Checks for flip flops
   StyleGuide: "#no-flip-flops"
@@ -515,14 +586,6 @@ Style/MethodDefParentheses:
   - require_parentheses
   - require_no_parentheses
   - require_no_parentheses_except_multiline
-Style/MethodName:
-  Description: Use the configured style when naming methods.
-  StyleGuide: "#snake-case-symbols-methods-vars"
-  Enabled: true
-  EnforcedStyle: snake_case
-  SupportedStyles:
-  - snake_case
-  - camelCase
 Style/MethodMissing:
   Description: Avoid using `method_missing`.
   StyleGuide: "#no-method-missing"
@@ -632,14 +695,14 @@ Style/OneLineConditional:
   Description: Favor the ternary operator(?:) over if/then/else/end constructs.
   StyleGuide: "#ternary-operator"
   Enabled: true
-Style/OpMethod:
-  Description: When defining binary operators, name the argument other.
-  StyleGuide: "#other-arg"
-  Enabled: true
 Style/OptionalArguments:
   Description: Checks for optional arguments that do not appear at the end of the
     argument list
   StyleGuide: "#optional-arguments"
+  Enabled: true
+Style/OrAssignment:
+  Description: Recommend usage of double pipe equals (||=) where applicable.
+  StyleGuide: "#double-pipe-for-uninit"
   Enabled: true
 Style/ParallelAssignment:
   Description: Check for simple usages of parallel assignment. It will only warn when
@@ -666,22 +729,6 @@ Style/PerlBackrefs:
   Description: Avoid Perl-style regex back references.
   StyleGuide: "#no-perl-regexp-last-matchers"
   Enabled: true
-Style/PredicateName:
-  Description: Check the names of predicate methods.
-  StyleGuide: "#bool-methods-qmark"
-  Enabled: true
-  NamePrefix:
-  - is_
-  - has_
-  - have_
-  NamePrefixBlacklist:
-  - is_
-  - has_
-  - have_
-  NameWhitelist:
-  - is_a?
-  Exclude:
-  - spec/**/*
 Style/PreferredHashMethods:
   Description: Checks use of `has_key?` and `has_value?` Hash methods.
   StyleGuide: "#hash-key"
@@ -773,6 +820,10 @@ Style/StabbyLambdaParentheses:
   SupportedStyles:
   - require_parentheses
   - require_no_parentheses
+Style/StderrPuts:
+  Description: Use `warn` instead of `$stderr.puts`.
+  StyleGuide: "#warn"
+  Enabled: true
 Style/StringLiterals:
   Description: Checks if uses of quotes match the configured preference.
   StyleGuide: "#consistent-string-literals"
@@ -852,14 +903,6 @@ Style/VariableInterpolation:
     strings.
   StyleGuide: "#curlies-interpolate"
   Enabled: true
-Style/VariableName:
-  Description: Use the configured style when naming variables.
-  StyleGuide: "#snake-case-symbols-methods-vars"
-  Enabled: true
-  EnforcedStyle: snake_case
-  SupportedStyles:
-  - snake_case
-  - camelCase
 Style/WhenThen:
   Description: Use when x then ... for one-line cases.
   StyleGuide: "#one-line-cases"
@@ -956,6 +999,10 @@ Lint/ParenthesesAsGroupedExpression:
   Enabled: true
 Lint/RescueException:
   Description: Avoid rescuing the Exception class.
+  StyleGuide: "#no-blind-rescues"
+  Enabled: true
+Lint/RescueWithoutErrorClass:
+  Description: Avoid rescuing without specifying an error class.
   StyleGuide: "#no-blind-rescues"
   Enabled: true
 Lint/StringConversionInInterpolation:
