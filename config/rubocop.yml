@@ -3,4 +3,5 @@ inherit_from:
   - internal/overrides.yml
 
 AllCops:
+  DisabledByDefault: true
   DisplayCopNames: true
