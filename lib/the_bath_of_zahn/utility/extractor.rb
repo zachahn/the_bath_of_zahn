@@ -1,6 +1,18 @@
 module TheBathOfZahn
   module Utility
     class Extractor
+      def rules_rails
+        @rules_rails ||=
+          rules_styleguide.select { |key, _value| key =~ %r{^Rails/} }
+      end
+
+      def rules_plain
+        @rules_plain ||=
+          rules_styleguide.reject { |key, _value| key =~ %r{^Rails/} }
+      end
+
+      private
+
       def rules_settings
         @rules_settings ||=
           begin
@@ -23,8 +35,6 @@ module TheBathOfZahn
             .map { |name, config| [name, config.merge(settings_for(name))] }
             .to_h
       end
-
-      private
 
       def settings_for(name)
         rules_settings[name] || {}

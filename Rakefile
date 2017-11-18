@@ -15,7 +15,8 @@ task :extract do
 
   extractor = TheBathOfZahn::Utility::Extractor.new
 
-  File.write("config/internal/style_guide.yml", extractor.rules_styleguide.to_yaml)
+  File.write("config/internal/style_guide.yml", extractor.rules_plain.to_yaml)
+  File.write("config/internal/rails_style_guide.yml", extractor.rules_rails.to_yaml)
 end
 
 task default: :test
