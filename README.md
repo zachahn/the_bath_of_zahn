@@ -38,7 +38,7 @@ Create a `.rubocop.yml` file in your repository with the following contents
 
 ```yaml
 inherit_gem:
-  the_bath_of_zahn: rubocop-rails.yml
+  the_bath_of_zahn: config/rubocop-rails.yml
 ```
 
 Or, if you are not working on a Rails project, there's a non-Rails configuration
@@ -46,7 +46,7 @@ as well.
 
 ```yaml
 inherit_gem:
-  the_bath_of_zahn: rubocop.yml
+  the_bath_of_zahn: config/rubocop.yml
 ```
 
 
