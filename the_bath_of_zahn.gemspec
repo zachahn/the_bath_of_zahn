@@ -1,5 +1,3 @@
-# coding: utf-8
-
 Gem::Specification.new do |spec|
   spec.name = "the_bath_of_zahn"
   spec.version = "0.0.3"
