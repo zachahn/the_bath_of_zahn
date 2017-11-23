@@ -31,6 +31,7 @@ Metrics/BlockLength:
     - config/initializers/**/*
     - config/environments/**/*
     - lib/tasks/**/*.rake
+    - "**/*.gemspec"
 
 Metrics/MethodLength:
   Exclude:
