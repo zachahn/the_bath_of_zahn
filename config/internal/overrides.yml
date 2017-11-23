@@ -77,3 +77,6 @@ Style/StringLiteralsInInterpolation:
 
 Style/TrailingCommaInLiteral:
   EnforcedStyleForMultiline: comma
+
+Style/WhileUntilModifier:
+  Enabled: false
