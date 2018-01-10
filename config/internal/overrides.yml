@@ -33,6 +33,10 @@ Metrics/BlockLength:
     - lib/tasks/**/*.rake
     - "**/*.gemspec"
 
+Metrics/ClassLength:
+  Exclude:
+    - test/**/*_test.rb
+
 Metrics/MethodLength:
   Exclude:
     - test/**/*_test.rb
