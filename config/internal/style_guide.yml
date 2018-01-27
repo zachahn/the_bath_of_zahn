@@ -39,6 +39,10 @@ Layout/DotPosition:
   SupportedStyles:
   - leading
   - trailing
+Layout/EmptyLineAfterMagicComment:
+  Description: Add an empty line after magic comments to separate them from code.
+  StyleGuide: "#separate-magic-comments-from-code"
+  Enabled: true
 Layout/EmptyLineBetweenDefs:
   Description: Use empty lines between defs.
   StyleGuide: "#empty-lines-between-methods"
@@ -79,6 +83,10 @@ Layout/EmptyLinesAroundExceptionHandlingKeywords:
   Description: Keeps track of empty lines around exception handling keywords.
   StyleGuide: "#empty-lines-around-bodies"
   Enabled: true
+Layout/EmptyLinesAroundMethodBody:
+  Description: Keeps track of empty lines around method bodies.
+  StyleGuide: "#empty-lines-around-bodies"
+  Enabled: true
 Layout/EmptyLinesAroundModuleBody:
   Description: Keeps track of empty lines around module bodies.
   StyleGuide: "#empty-lines-around-bodies"
@@ -89,10 +97,6 @@ Layout/EmptyLinesAroundModuleBody:
   - empty_lines_except_namespace
   - empty_lines_special
   - no_empty_lines
-Layout/EmptyLinesAroundMethodBody:
-  Description: Keeps track of empty lines around method bodies.
-  StyleGuide: "#empty-lines-around-bodies"
-  Enabled: true
 Layout/EndOfLine:
   Description: Use Unix-style line endings.
   StyleGuide: "#crlf"
@@ -102,6 +106,17 @@ Layout/EndOfLine:
   - native
   - lf
   - crlf
+Layout/IndentHeredoc:
+  Description: This cops checks the indentation of the here document bodies.
+  StyleGuide: "#squiggly-heredocs"
+  Enabled: true
+  EnforcedStyle: auto_detection
+  SupportedStyles:
+  - auto_detection
+  - squiggly
+  - active_support
+  - powerpack
+  - unindent
 Layout/IndentationConsistency:
   Description: Keep indentation straight.
   StyleGuide: "#spaces-indentation"
@@ -116,24 +131,9 @@ Layout/IndentationWidth:
   Enabled: true
   Width: 2
   IgnoredPatterns: []
-Layout/IndentHeredoc:
-  Description: This cops checks the indentation of the here document bodies.
-  StyleGuide: "#squiggly-heredocs"
-  Enabled: true
-  EnforcedStyle: auto_detection
-  SupportedStyles:
-  - auto_detection
-  - squiggly
-  - active_support
-  - powerpack
-  - unindent
 Layout/LeadingCommentSpace:
   Description: Comments should start with a space.
   StyleGuide: "#hash-space"
-  Enabled: true
-Layout/EmptyLineAfterMagicComment:
-  Description: Add an empty line after magic comments to separate them from code.
-  StyleGuide: "#separate-magic-comments-from-code"
   Enabled: true
 Layout/SpaceAfterColon:
   Description: Use spaces after colons.
@@ -170,10 +170,6 @@ Layout/SpaceAroundOperators:
   StyleGuide: "#spaces-operators"
   Enabled: true
   AllowForAlignment: true
-Layout/SpaceInsideBrackets:
-  Description: No spaces after [ or before ].
-  StyleGuide: "#no-spaces-braces"
-  Enabled: true
 Layout/SpaceInsideHashLiteralBraces:
   Description: Use spaces inside hash literal braces - or don't.
   StyleGuide: "#spaces-operators"
@@ -189,7 +185,7 @@ Layout/SpaceInsideHashLiteralBraces:
   - no_space
 Layout/SpaceInsideParens:
   Description: No spaces after ( or before ).
-  StyleGuide: "#no-spaces-braces"
+  StyleGuide: "#spaces-braces"
   Enabled: true
 Layout/SpaceInsideRangeLiteral:
   Description: No spaces inside range literals.
@@ -220,6 +216,101 @@ Layout/TrailingWhitespace:
   Description: Avoid trailing whitespace.
   StyleGuide: "#no-trailing-whitespace"
   Enabled: true
+Lint/AmbiguousBlockAssociation:
+  Description: Checks for ambiguous block association with method when param passed
+    without parentheses.
+  StyleGuide: "#syntax"
+  Enabled: true
+Lint/AmbiguousOperator:
+  Description: Checks for ambiguous operators in the first argument of a method invocation
+    without parentheses.
+  StyleGuide: "#method-invocation-parens"
+  Enabled: true
+Lint/AssignmentInCondition:
+  Description: Don't use assignment in conditions.
+  StyleGuide: "#safe-assignment-in-condition"
+  Enabled: true
+  AllowSafeAssignment: true
+Lint/ConditionPosition:
+  Description: Checks for condition placed in a confusing position relative to the
+    keyword.
+  StyleGuide: "#same-line-condition"
+  Enabled: true
+Lint/EnsureReturn:
+  Description: Do not use return in an ensure block.
+  StyleGuide: "#no-return-ensure"
+  Enabled: true
+Lint/HandleExceptions:
+  Description: Don't suppress exception.
+  StyleGuide: "#dont-hide-exceptions"
+  Enabled: true
+Lint/Loop:
+  Description: Use Kernel#loop with break rather than begin/end/until or begin/end/while
+    for post-loop tests.
+  StyleGuide: "#loop-with-break"
+  Enabled: true
+Lint/NestedMethodDefinition:
+  Description: Do not use nested method definitions.
+  StyleGuide: "#no-nested-methods"
+  Enabled: true
+Lint/ParenthesesAsGroupedExpression:
+  Description: Checks for method calls with a space before the opening parenthesis.
+  StyleGuide: "#parens-no-spaces"
+  Enabled: true
+Lint/RescueException:
+  Description: Avoid rescuing the Exception class.
+  StyleGuide: "#no-blind-rescues"
+  Enabled: true
+Lint/StringConversionInInterpolation:
+  Description: Checks for Object#to_s usage in string interpolation.
+  StyleGuide: "#no-to-s"
+  Enabled: true
+Lint/UnusedBlockArgument:
+  Description: Checks for unused block arguments.
+  StyleGuide: "#underscore-unused-vars"
+  Enabled: true
+  IgnoreEmptyBlocks: true
+  AllowUnusedKeywordArguments: false
+Lint/UnusedMethodArgument:
+  Description: Checks for unused method arguments.
+  StyleGuide: "#underscore-unused-vars"
+  Enabled: true
+  AllowUnusedKeywordArguments: false
+  IgnoreEmptyMethods: true
+Lint/UselessAssignment:
+  Description: Checks for useless assignment to a local variable.
+  StyleGuide: "#underscore-unused-vars"
+  Enabled: true
+Metrics/BlockNesting:
+  Description: Avoid excessive block nesting
+  StyleGuide: "#three-is-the-number-thou-shalt-count"
+  Enabled: true
+  CountBlocks: false
+  Max: 3
+Metrics/LineLength:
+  Description: Limit lines to 80 characters.
+  StyleGuide: "#80-character-limits"
+  Enabled: true
+  Max: 80
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+  - http
+  - https
+  IgnoreCopDirectives: false
+  IgnoredPatterns: []
+Metrics/MethodLength:
+  Description: Avoid methods longer than 10 lines of code.
+  StyleGuide: "#short-methods"
+  Enabled: true
+  CountComments: false
+  Max: 10
+Metrics/ParameterLists:
+  Description: Avoid parameter lists longer than three or four parameters.
+  StyleGuide: "#too-many-params"
+  Enabled: true
+  Max: 5
+  CountKeywordArgs: true
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   StyleGuide: "#accessor_mutator_method_names"
@@ -227,6 +318,10 @@ Naming/AccessorMethodName:
 Naming/AsciiIdentifiers:
   Description: Use only ascii symbols in identifiers.
   StyleGuide: "#english-identifiers"
+  Enabled: true
+Naming/BinaryOperatorParameterName:
+  Description: When defining binary operators, name the argument other.
+  StyleGuide: "#other-arg"
   Enabled: true
 Naming/ClassAndModuleCamelCase:
   Description: Use CamelCase for classes and modules.
@@ -327,10 +422,6 @@ Naming/PredicateName:
   - define_singleton_method
   Exclude:
   - spec/**/*
-Naming/BinaryOperatorParameterName:
-  Description: When defining binary operators, name the argument other.
-  StyleGuide: "#other-arg"
-  Enabled: true
 Naming/VariableName:
   Description: Use the configured style when naming variables.
   StyleGuide: "#snake-case-symbols-methods-vars"
@@ -339,6 +430,12 @@ Naming/VariableName:
   SupportedStyles:
   - snake_case
   - camelCase
+Performance/HashEachMethods:
+  Description: Use `Hash#each_key` and `Hash#each_value` instead of `Hash#keys.each`
+    and `Hash#values.each`.
+  StyleGuide: "#hash-each"
+  Enabled: true
+  AutoCorrect: false
 Style/Alias:
   Description: Use alias instead of alias_method.
   StyleGuide: "#alias-method"
@@ -363,13 +460,10 @@ Style/AsciiComments:
   Description: Use only ascii symbols in comments.
   StyleGuide: "#english-comments"
   Enabled: true
+  AllowedChars: []
 Style/Attr:
   Description: Checks for uses of Module#attr.
   StyleGuide: "#attr"
-  Enabled: true
-Style/BeginBlock:
-  Description: Avoid the use of BEGIN blocks.
-  StyleGuide: "#no-BEGIN-blocks"
   Enabled: true
 Style/BarePercentLiterals:
   Description: Checks if usage of %() or %Q() matches configuration.
@@ -379,6 +473,10 @@ Style/BarePercentLiterals:
   SupportedStyles:
   - percent_q
   - bare_percent
+Style/BeginBlock:
+  Description: Avoid the use of BEGIN blocks.
+  StyleGuide: "#no-BEGIN-blocks"
+  Enabled: true
 Style/BlockComments:
   Description: Do not use block comments.
   StyleGuide: "#no-block-comments"
@@ -424,6 +522,7 @@ Style/CharacterLiteral:
 Style/ClassAndModuleChildren:
   Description: Checks style of children classes and modules.
   StyleGuide: "#namespace-definition"
+  AutoCorrect: false
   Enabled: true
   EnforcedStyle: nested
   SupportedStyles:
@@ -440,6 +539,10 @@ Style/ClassVars:
 Style/ColonMethodCall:
   Description: 'Do not use :: for method call.'
   StyleGuide: "#double-colons"
+  Enabled: true
+Style/ColonMethodDefinition:
+  Description: 'Do not use :: for defining class methods.'
+  StyleGuide: "#colon-method-definition"
   Enabled: true
 Style/CommandLiteral:
   Description: Use `` or %x around command literals.
@@ -486,13 +589,13 @@ Style/EmptyMethod:
   SupportedStyles:
   - compact
   - expanded
-Style/EndBlock:
-  Description: Avoid the use of END blocks.
-  StyleGuide: "#no-END-blocks"
-  Enabled: true
 Style/Encoding:
   Description: Use UTF-8 as the source file encoding.
   StyleGuide: "#utf-8"
+  Enabled: true
+Style/EndBlock:
+  Description: Avoid the use of END blocks.
+  StyleGuide: "#no-END-blocks"
   Enabled: true
 Style/EvenOdd:
   Description: Favor the use of Integer#even? && Integer#odd?
@@ -547,7 +650,6 @@ Style/IfUnlessModifier:
   Description: Favor modifier if/unless usage when you have a single-line body.
   StyleGuide: "#if-as-a-modifier"
   Enabled: true
-  MaxLineLength: 80
 Style/IfWithSemicolon:
   Description: Do not use if x; .... Use the ternary operator instead.
   StyleGuide: "#no-semicolon-ifs"
@@ -610,13 +712,13 @@ Style/MultilineBlockChain:
   Description: Avoid multi-line chains of blocks.
   StyleGuide: "#single-line-blocks"
   Enabled: true
-Style/MultilineIfThen:
-  Description: Do not use then for multi-line if/unless.
-  StyleGuide: "#no-then"
-  Enabled: true
 Style/MultilineIfModifier:
   Description: Only use if/unless modifiers on single line statements.
   StyleGuide: "#no-multiline-if-modifiers"
+  Enabled: true
+Style/MultilineIfThen:
+  Description: Do not use then for multi-line if/unless.
+  StyleGuide: "#no-then"
   Enabled: true
 Style/MultilineTernaryOperator:
   Description: 'Avoid multi-line ?: (the ternary operator); use if/unless instead.'
@@ -665,12 +767,6 @@ Style/Not:
   Description: Use ! instead of not.
   StyleGuide: "#bang-not-not"
   Enabled: true
-Style/NumericLiterals:
-  Description: Add underscores to large numeric literals to improve their readability.
-  StyleGuide: "#underscores-in-numerics"
-  Enabled: true
-  MinDigits: 5
-  Strict: false
 Style/NumericLiteralPrefix:
   Description: Use smallcase prefixes for numeric literals.
   StyleGuide: "#numeric-literal-prefixes"
@@ -679,6 +775,12 @@ Style/NumericLiteralPrefix:
   SupportedOctalStyles:
   - zero_with_o
   - zero_only
+Style/NumericLiterals:
+  Description: Add underscores to large numeric literals to improve their readability.
+  StyleGuide: "#underscores-in-numerics"
+  Enabled: true
+  MinDigits: 5
+  Strict: false
 Style/NumericPredicate:
   Description: Checks for the use of predicate- or comparison methods for numeric
     comparisons.
@@ -749,6 +851,11 @@ Style/RaiseArgs:
   SupportedStyles:
   - compact
   - exploded
+Style/RandomWithOffset:
+  Description: Prefer to use ranges when generating random numbers instead of integers
+    with offsets.
+  StyleGuide: "#random-numbers"
+  Enabled: true
 Style/RedundantBegin:
   Description: Don't use begin blocks when they are not needed.
   StyleGuide: "#begin-implicit"
@@ -915,7 +1022,6 @@ Style/WhileUntilModifier:
   Description: Favor modifier while/until usage when you have a single-line body.
   StyleGuide: "#while-as-a-modifier"
   Enabled: true
-  MaxLineLength: 80
 Style/WordArray:
   Description: Use %w or %W for arrays of words.
   StyleGuide: "#percent-w"
@@ -926,108 +1032,3 @@ Style/WordArray:
   - brackets
   MinSize: 0
   WordRegex: !ruby/regexp /\A[\p{Word}\n\t]+\z/
-Metrics/BlockNesting:
-  Description: Avoid excessive block nesting
-  StyleGuide: "#three-is-the-number-thou-shalt-count"
-  Enabled: true
-  CountBlocks: false
-  Max: 3
-Metrics/LineLength:
-  Description: Limit lines to 80 characters.
-  StyleGuide: "#80-character-limits"
-  Enabled: true
-  Max: 80
-  AllowHeredoc: true
-  AllowURI: true
-  URISchemes:
-  - http
-  - https
-  IgnoreCopDirectives: false
-  IgnoredPatterns: []
-Metrics/MethodLength:
-  Description: Avoid methods longer than 10 lines of code.
-  StyleGuide: "#short-methods"
-  Enabled: true
-  CountComments: false
-  Max: 10
-Metrics/ParameterLists:
-  Description: Avoid parameter lists longer than three or four parameters.
-  StyleGuide: "#too-many-params"
-  Enabled: true
-  Max: 5
-  CountKeywordArgs: true
-Lint/AmbiguousBlockAssociation:
-  Description: Checks for ambiguous block association with method when param passed
-    without parentheses.
-  StyleGuide: "#syntax"
-  Enabled: true
-Lint/AmbiguousOperator:
-  Description: Checks for ambiguous operators in the first argument of a method invocation
-    without parentheses.
-  StyleGuide: "#method-invocation-parens"
-  Enabled: true
-Lint/AssignmentInCondition:
-  Description: Don't use assignment in conditions.
-  StyleGuide: "#safe-assignment-in-condition"
-  Enabled: true
-  AllowSafeAssignment: true
-Lint/ConditionPosition:
-  Description: Checks for condition placed in a confusing position relative to the
-    keyword.
-  StyleGuide: "#same-line-condition"
-  Enabled: true
-Lint/EnsureReturn:
-  Description: Do not use return in an ensure block.
-  StyleGuide: "#no-return-ensure"
-  Enabled: true
-Lint/HandleExceptions:
-  Description: Don't suppress exception.
-  StyleGuide: "#dont-hide-exceptions"
-  Enabled: true
-Lint/Loop:
-  Description: Use Kernel#loop with break rather than begin/end/until or begin/end/while
-    for post-loop tests.
-  StyleGuide: "#loop-with-break"
-  Enabled: true
-Lint/NestedMethodDefinition:
-  Description: Do not use nested method definitions.
-  StyleGuide: "#no-nested-methods"
-  Enabled: true
-Lint/ParenthesesAsGroupedExpression:
-  Description: Checks for method calls with a space before the opening parenthesis.
-  StyleGuide: "#parens-no-spaces"
-  Enabled: true
-Lint/RescueException:
-  Description: Avoid rescuing the Exception class.
-  StyleGuide: "#no-blind-rescues"
-  Enabled: true
-Lint/RescueWithoutErrorClass:
-  Description: Avoid rescuing without specifying an error class.
-  StyleGuide: "#no-blind-rescues"
-  Enabled: true
-Lint/StringConversionInInterpolation:
-  Description: Checks for Object#to_s usage in string interpolation.
-  StyleGuide: "#no-to-s"
-  Enabled: true
-Lint/UnusedBlockArgument:
-  Description: Checks for unused block arguments.
-  StyleGuide: "#underscore-unused-vars"
-  Enabled: true
-  IgnoreEmptyBlocks: true
-  AllowUnusedKeywordArguments: false
-Lint/UnusedMethodArgument:
-  Description: Checks for unused method arguments.
-  StyleGuide: "#underscore-unused-vars"
-  Enabled: true
-  AllowUnusedKeywordArguments: false
-  IgnoreEmptyMethods: true
-Lint/UselessAssignment:
-  Description: Checks for useless assignment to a local variable.
-  StyleGuide: "#underscore-unused-vars"
-  Enabled: true
-Performance/HashEachMethods:
-  Description: Use `Hash#each_key` and `Hash#each_value` instead of `Hash#keys.each`
-    and `Hash#values.each`.
-  StyleGuide: "#hash-each"
-  Enabled: true
-  AutoCorrect: false

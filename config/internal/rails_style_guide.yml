@@ -29,6 +29,13 @@ Rails/HasManyOrHasOneDependent:
   Enabled: true
   Include:
   - app/models/**/*.rb
+Rails/LexicallyScopedActionFilter:
+  Description: Checks that methods specified in the filter's `only` or `except` options
+    are explicitly defined in the controller.
+  StyleGuide: https://github.com/bbatsov/rails-style-guide#lexically-scoped-action-filter
+  Enabled: true
+  Include:
+  - app/controllers/**/*.rb
 Rails/ReadWriteAttribute:
   Description: Checks for read_attribute(:attr) and write_attribute(:attr, val).
   StyleGuide: https://github.com/bbatsov/rails-style-guide#read-attribute
