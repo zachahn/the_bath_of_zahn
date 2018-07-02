@@ -1,11 +1,6 @@
 module TheBathOfZahn
   module Utility
     class Extractor
-      def rules_rails
-        @rules_rails ||=
-          rules_styleguide.select { |key, _value| key =~ %r{^Rails/} }
-      end
-
       def rules_plain
         @rules_plain ||=
           rules_styleguide.reject { |key, _value| key =~ %r{^Rails/} }
